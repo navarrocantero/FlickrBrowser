@@ -10,7 +10,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GetRawData getRawData = new GetRawData("https://api.flickr.com/services/feeds/photos_public.gne?tags=android,snapshot&tagmode=any&format=json&nojsoncallback=1");
-        getRawData.execute();
+        GetFlickrJsonData getFlickrJsonData = new GetFlickrJsonData(
+                "android,snapshot",
+                true);
+        getFlickrJsonData.execute();
     }
 }
