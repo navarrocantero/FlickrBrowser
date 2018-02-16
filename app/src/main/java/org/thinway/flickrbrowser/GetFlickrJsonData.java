@@ -107,7 +107,9 @@ public class GetFlickrJsonData extends GetRawData {
 
         @Override
         protected String doInBackground(String... params) {
-            return super.doInBackground(params);
+            String [] par = { mDestinationUri.toString() };
+
+            return super.doInBackground(par);
         }
     }
 }

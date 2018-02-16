@@ -22,7 +22,7 @@ public class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrRecycl
     private List<Photo> mPhotoList;
     private Context     mContext;
 
-    public FlickrRecyclerViewAdapter(List<Photo> photoList, Context context) {
+    public FlickrRecyclerViewAdapter(Context context, List<Photo> photoList) {
         mPhotoList = photoList;
         mContext = context;
     }

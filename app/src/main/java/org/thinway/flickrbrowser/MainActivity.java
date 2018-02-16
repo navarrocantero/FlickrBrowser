@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
             protected void onPostExecute(String webData) {
                 super.onPostExecute(webData);
                 mFlickrRecyclerViewAdapter = new FlickrRecyclerViewAdapter(
-                        getPhotos(), MainActivity.this
-                );
+                        MainActivity.this, getPhotos()
+                        );
 
                 mRecyclerView.setAdapter(mFlickrRecyclerViewAdapter);
             }
