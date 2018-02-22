@@ -31,7 +31,14 @@ public class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrRecycl
     public FlickrRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.browse, null);
+                .inflate(R.layout.browse, null, false);
+
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        view.setLayoutParams(lp);
+
         FlickrRecyclerViewHolder flickrRecyclerViewHolder =
                 new FlickrRecyclerViewHolder(view);
 
