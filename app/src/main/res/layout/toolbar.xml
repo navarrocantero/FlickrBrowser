@@ -7,4 +7,5 @@
     flickr:theme="@style/ActionBarThemeOverlay"
     flickr:titleTextAppearance="@style/ActionBar.TitleText">
 
+
 </android.support.v7.widget.Toolbar>

@@ -3,6 +3,8 @@ package org.thinway.flickrbrowser;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ public class MainActivity extends BaseActivity {
     private List<Photo> mPhotoList = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private FlickrRecyclerViewAdapter mFlickrRecyclerViewAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,23 @@ public class MainActivity extends BaseActivity {
                 true
         );
         processPhotos.execute();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if( id == R.id.menu_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public class ProcessPhotos extends GetFlickrJsonData {
