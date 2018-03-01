@@ -5,9 +5,17 @@
 
     <item
         android:id="@+id/menu_settings"
-        android:title="@string/settings"
         android:orderInCategory="100"
+        android:title="@string/settings"
         flickr:showAsAction="never">
+    </item>
+
+    <item
+        android:id="@+id/menu_search"
+        android:orderInCategory="50"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/search_menu_item"
+        flickr:showAsAction="always">
     </item>
 
 </menu>

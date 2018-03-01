@@ -20,6 +20,14 @@
         </activity>
         <activity android:name=".BaseActivity">
         </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/search_activity_label"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.thinway.flickrbrowser.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
