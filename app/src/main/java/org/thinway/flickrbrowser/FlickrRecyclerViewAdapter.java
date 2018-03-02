@@ -65,6 +65,12 @@ public class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrRecycl
 
         holder.mTitle.setText(photoItem.getTitle());
     }
+
+    public void loadNewData(List<Photo> photos){
+        mPhotoList = photos;
+
+        notifyDataSetChanged();
+    }
 }
 
 

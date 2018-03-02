@@ -1,7 +1,9 @@
 package org.thinway.flickrbrowser;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -9,6 +11,8 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.thinway.flickrbrowser.SearchActivity.FLICKR_QUERY;
 
 public class MainActivity extends BaseActivity {
 
@@ -30,11 +34,45 @@ public class MainActivity extends BaseActivity {
                 new LinearLayoutManager(this)
         );
 
+        mFlickrRecyclerViewAdapter = new FlickrRecyclerViewAdapter(
+                MainActivity.this,
+                new ArrayList<Photo>()
+        );
+        mRecyclerView.setAdapter( mFlickrRecyclerViewAdapter );
+
+        // Capturar la información
         ProcessPhotos processPhotos = new ProcessPhotos(
                 "android, snapshot",
                 true
         );
         processPhotos.execute();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if ( mFlickrRecyclerViewAdapter != null ){
+            SharedPreferences sharedPreferences =
+                    PreferenceManager.getDefaultSharedPreferences(
+                            getApplicationContext()
+                    );
+            String query = getSavedPreferenceData(FLICKR_QUERY);
+            if ( query.length() > 0) {
+                ProcessPhotos processPhotos =
+                        new ProcessPhotos(query, true);
+                processPhotos.execute();
+            }
+        }
+    }
+
+    private String getSavedPreferenceData(String flickrQuery) {
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(
+                        getApplicationContext()
+                );
+
+        return sharedPreferences.getString(flickrQuery, "sharapova");
     }
 
     @Override
@@ -80,11 +118,7 @@ public class MainActivity extends BaseActivity {
             @Override
             protected void onPostExecute(String webData) {
                 super.onPostExecute(webData);
-                mFlickrRecyclerViewAdapter = new FlickrRecyclerViewAdapter(
-                        MainActivity.this, getPhotos()
-                        );
-
-                mRecyclerView.setAdapter(mFlickrRecyclerViewAdapter);
+                mFlickrRecyclerViewAdapter.loadNewData(getPhotos());
             }
         }
     }
