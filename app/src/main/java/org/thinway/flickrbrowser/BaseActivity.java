@@ -5,6 +5,8 @@ import android.support.v7.widget.Toolbar;
 
 public class BaseActivity extends AppCompatActivity {
 
+    public static final String PHOTO_TRANSFER = "PHOTO_TRANSFER";
+
     private Toolbar mToolbar;
 
     protected Toolbar activateToolbar(){

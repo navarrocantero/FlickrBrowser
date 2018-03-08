@@ -1,10 +1,14 @@
 package org.thinway.flickrbrowser;
 
+import java.io.Serializable;
+
 /**
  * Created by fdelgado on 8/2/18.
  */
 
-public class Photo {
+public class Photo implements Serializable {
+
+    private static final long serialVersionUID = 3809936409831543140L;
 
     private String mTitle;
     private String mLink;
@@ -44,6 +48,10 @@ public class Photo {
 
     public String getTags() {
         return mTags;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     @Override

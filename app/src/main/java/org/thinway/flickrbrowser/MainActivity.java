@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,29 +42,46 @@ public class MainActivity extends BaseActivity {
         );
         mRecyclerView.setAdapter( mFlickrRecyclerViewAdapter );
 
-        // Capturar la información
-        ProcessPhotos processPhotos = new ProcessPhotos(
-                "android, snapshot",
-                true
-        );
-        processPhotos.execute();
+        mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(
+                this,
+                mRecyclerView,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        //Toast.makeText(MainActivity.this, "Normal Tap", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(
+                                MainActivity.this,
+                                ViewPhotoDetailsActivity.class
+                        );
+
+                        intent.putExtra(
+                                PHOTO_TRANSFER,
+                                mFlickrRecyclerViewAdapter.getPhoto(position)
+                        );
+                        startActivity( intent );
+                    }
+
+                    @Override
+                    public void onItemLongClick(View view, int position) {
+                        Toast.makeText(MainActivity.this, "Long Tap", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        if ( mFlickrRecyclerViewAdapter != null ){
-            SharedPreferences sharedPreferences =
-                    PreferenceManager.getDefaultSharedPreferences(
-                            getApplicationContext()
-                    );
-            String query = getSavedPreferenceData(FLICKR_QUERY);
-            if ( query.length() > 0) {
-                ProcessPhotos processPhotos =
-                        new ProcessPhotos(query, true);
-                processPhotos.execute();
-            }
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(
+                        getApplicationContext()
+                );
+        String query = getSavedPreferenceData(FLICKR_QUERY);
+        if ( query.length() > 0) {
+            ProcessPhotos processPhotos =
+                    new ProcessPhotos(query, true);
+            processPhotos.execute();
         }
     }
 
