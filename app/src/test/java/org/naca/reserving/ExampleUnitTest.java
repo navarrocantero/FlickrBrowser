@@ -1,4 +1,4 @@
-package org.thinway.flickrbrowser;
+package org.naca.reserving;
 
 import org.junit.Test;
 

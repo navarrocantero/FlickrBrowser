@@ -1,11 +1,11 @@
-package org.thinway.flickrbrowser;
+package org.naca.reserving;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 public class BaseActivity extends AppCompatActivity {
 
-    public static final String PHOTO_TRANSFER = "PHOTO_TRANSFER";
+    public static final String HOUSE_TRANSFER = "HOUSE_TRANSFER";
 
     private Toolbar mToolbar;
 

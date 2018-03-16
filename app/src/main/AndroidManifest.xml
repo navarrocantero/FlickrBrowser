@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.thinway.flickrbrowser">
+    package="org.naca.reserving">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,39 +10,38 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Flickr">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.Reserving">
+        <activity android:name="org.naca.reserving.MainActivity"/>
+        <activity android:name="org.naca.reserving.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BaseActivity">
-        </activity>
+        <activity android:name="org.naca.reserving.BaseActivity"/>
         <activity
-            android:name=".SearchActivity"
+            android:name="org.naca.reserving.SearchActivity"
             android:label="@string/search_activity_label"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="org.naca.reserving.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.thinway.flickrbrowser.MainActivity"/>
+                android:value="org.naca.reserving.MainActivity" />
 
             <intent-filter>
-                <action android:name="android.intent.action.SEARCH"/>
+                <action android:name="android.intent.action.SEARCH" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
+                android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".ViewPhotoDetailsActivity"
-            android:label="@string/photo_detail_activity_title"
-            android:parentActivityName=".MainActivity" >
-        </activity>
+            android:name="org.naca.reserving.ViewHouseDetailsActivity"
+            android:label="@string/house_detail_activity_title"
+            android:parentActivityName="org.naca.reserving.MainActivity"/>
     </application>
 
 </manifest>

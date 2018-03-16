@@ -1,4 +1,4 @@
-package org.thinway.flickrbrowser;
+package org.naca.reserving;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,14 +14,14 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.thinway.flickrbrowser.SearchActivity.FLICKR_QUERY;
+import static org.naca.reserving.SearchActivity.RESERVING_QUERY;
 
 public class MainActivity extends BaseActivity {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
-    private List<Photo> mPhotoList = new ArrayList<>();
+    private List<House> mHouseList = new ArrayList<>();
     private RecyclerView mRecyclerView;
-    private FlickrRecyclerViewAdapter mFlickrRecyclerViewAdapter;
+    private ReservingRecyclerViewAdapter mReservingRecyclerViewAdapter;
 
 
     @Override
@@ -29,18 +29,16 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        activateToolbar();
-
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(
                 new LinearLayoutManager(this)
         );
 
-        mFlickrRecyclerViewAdapter = new FlickrRecyclerViewAdapter(
+        mReservingRecyclerViewAdapter = new ReservingRecyclerViewAdapter(
                 MainActivity.this,
-                new ArrayList<Photo>()
+                new ArrayList<House>()
         );
-        mRecyclerView.setAdapter( mFlickrRecyclerViewAdapter );
+        mRecyclerView.setAdapter(mReservingRecyclerViewAdapter);
 
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(
                 this,
@@ -51,12 +49,12 @@ public class MainActivity extends BaseActivity {
                         //Toast.makeText(MainActivity.this, "Normal Tap", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(
                                 MainActivity.this,
-                                ViewPhotoDetailsActivity.class
+                                ViewHouseDetailsActivity.class
                         );
 
                         intent.putExtra(
-                                PHOTO_TRANSFER,
-                                mFlickrRecyclerViewAdapter.getPhoto(position)
+                                HOUSE_TRANSFER,
+                                mReservingRecyclerViewAdapter.getPhoto(position)
                         );
                         startActivity( intent );
                     }
@@ -67,6 +65,7 @@ public class MainActivity extends BaseActivity {
                     }
                 }
         ));
+
     }
 
     @Override
@@ -77,11 +76,11 @@ public class MainActivity extends BaseActivity {
                 PreferenceManager.getDefaultSharedPreferences(
                         getApplicationContext()
                 );
-        String query = getSavedPreferenceData(FLICKR_QUERY);
+        String query = getSavedPreferenceData(RESERVING_QUERY);
         if ( query.length() > 0) {
-            ProcessPhotos processPhotos =
-                    new ProcessPhotos(query, true);
-            processPhotos.execute();
+            ProcessHouse processHouse =
+                    new ProcessHouse(query, true);
+            processHouse.execute();
         }
     }
 
@@ -118,9 +117,9 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class ProcessPhotos extends GetFlickrJsonData {
+    public class ProcessHouse extends GetReservingJsonData {
 
-        public ProcessPhotos(String searchCriteria, boolean matchAll) {
+        public ProcessHouse(String searchCriteria, boolean matchAll) {
             super(searchCriteria, matchAll);
         }
 
@@ -134,10 +133,16 @@ public class MainActivity extends BaseActivity {
 
         public class ProcessData extends DownloadJsonData {
 
+            // se cargan los datos cuando se carga la actividad
             @Override
             protected void onPostExecute(String webData) {
                 super.onPostExecute(webData);
-                mFlickrRecyclerViewAdapter.loadNewData(getPhotos());
+                mReservingRecyclerViewAdapter.loadNewData(getPhotos());
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+                return super.doInBackground(params);
             }
         }
     }

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:flickr="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.naca.reserving.ViewHouseDetailsActivity">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        flickr:layout_constraintEnd_toEndOf="parent"
+        flickr:layout_constraintStart_toStartOf="parent"
+        flickr:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar"
+        flickr:cardBackgroundColor="@color/backgroundColor"
+        flickr:cardCornerRadius="0dp"
+        flickr:cardPreventCornerOverlap="false"
+        flickr:layout_constraintLeft_toLeftOf="parent"
+        flickr:layout_constraintRight_toRightOf="parent"
+        flickr:contentPaddingTop="16dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="300dp"
+                android:layout_height="149dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/photo_description"
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.108"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="354dp"
+                tools:layout_conversion_absoluteWidth="368dp" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/flickrPrimaryTextColor"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.763"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="22dp"
+                tools:layout_conversion_absoluteWidth="368dp" />
+
+            <!--<TextView-->
+            <!--android:id="@+id/direction"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:paddingTop="8dp"-->
+            <!--android:paddingLeft="8dp"-->
+            <!--android:textColor="@color/flickrSecondaryTextColor"-->
+            <!--android:textSize="20sp"-->
+            <!--tools:layout_conversion_absoluteHeight="25dp"-->
+            <!--tools:layout_editor_absoluteY="486dp"-->
+            <!--tools:layout_editor_absoluteX="0dp"-->
+            <!--tools:layout_conversion_absoluteWidth="384dp" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/max_users"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/flickrPrimaryTextColor"-->
+            <!--android:textSize="16sp"-->
+            <!--tools:layout_conversion_absoluteHeight="11dp"-->
+            <!--tools:layout_editor_absoluteY="518dp"-->
+            <!--tools:layout_editor_absoluteX="8dp"-->
+            <!--tools:layout_conversion_absoluteWidth="368dp" />-->
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/flickrPrimaryTextColor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image"
+                tools:layout_conversion_absoluteHeight="11dp"
+                tools:layout_conversion_absoluteWidth="368dp" />
+
+            <!--<TextView-->
+            <!--android:id="@+id/price"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/flickrPrimaryTextColor"-->
+            <!--android:textSize="16sp"-->
+            <!--tools:layout_conversion_absoluteHeight="11dp"-->
+            <!--tools:layout_editor_absoluteY="556dp"-->
+            <!--tools:layout_editor_absoluteX="8dp"-->
+            <!--tools:layout_conversion_absoluteWidth="368dp" />-->
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

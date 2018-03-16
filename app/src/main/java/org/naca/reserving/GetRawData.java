@@ -1,4 +1,4 @@
-package org.thinway.flickrbrowser;
+package org.naca.reserving;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -11,9 +11,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by fdelgado on 8/2/18.
- */
 
 enum DownloadStatus {
     IDLE,               // No está procesando nada

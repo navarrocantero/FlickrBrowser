@@ -1,4 +1,4 @@
-package org.thinway.flickrbrowser;
+package org.naca.reserving;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,9 +6,6 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-/**
- * Created by fdelgado on 8/3/18.
- */
 
 public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener
 {

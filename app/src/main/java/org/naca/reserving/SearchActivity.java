@@ -1,4 +1,4 @@
-package org.thinway.flickrbrowser;
+package org.naca.reserving;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.view.MenuItem;
 
 public class SearchActivity extends BaseActivity {
 
-    public static final String FLICKR_QUERY = "FLICKR_QUERY";
+    public static final String RESERVING_QUERY = "RESERVING_QUERY";
 
     private SearchView mSearchView;
 
@@ -43,7 +43,7 @@ public class SearchActivity extends BaseActivity {
                         PreferenceManager.getDefaultSharedPreferences(
                                 getApplicationContext()
                         );
-                sharedPreferences.edit().putString(FLICKR_QUERY, query).commit();
+                sharedPreferences.edit().putString(RESERVING_QUERY, query).commit();
                 mSearchView.clearFocus();
 
                 finish();
